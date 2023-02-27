@@ -1,0 +1,24 @@
+name: aws-sqs-queue-plugin
+description: AWS SQS Queue
+display-name: aws-sqs-queue-plugin
+picture: plugin.png
+category: backend # Ref: https://docs.stackspot.com/docs/create-stacks/yaml-files/plugin/#category
+compatibility:
+  - terraform
+  - aws
+about: docs/about.md
+usage: docs/usage.md
+use-case: docs/use-case.md
+implementation: docs/implementation.md
+technologies: # Ref: https://docs.stackspot.com/docs/create-stacks/yaml-files/yaml/#technologies
+  - terraform
+types:
+  - app
+inputs:
+  - label: SQS Name 
+    type: text
+    name: sqs_name
+    default: sqs_sample
+computed-inputs:
+  sqs_name_with_hyphens: "{{inputs.sqs_name | replace(' ','-') | replace('_','-')}}"
+  sqs_name_with_underscores: "{{inputs.sqs_name | replace(' ','_') | replace('-','_')}}"
